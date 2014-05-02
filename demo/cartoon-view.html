@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cartoon View</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="minimal-ui, device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+    <link rel="stylesheet" href="../css/normalize.css"/>
+    <link rel="stylesheet" href="../css/boilerplate.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.css"/>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+        }
+
+        header, footer {
+            position: fixed;
+            overflow: hidden;
+            height: 49px;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            transition: All 0.5s ease;
+            -webkit-transition: All 0.2s ease;
+            -moz-transition: All 0.2s ease;
+            -o-transition: All 0.2s ease;
+        }
+
+        header.hide {
+            -webkit-transform: translateY(-49px);
+            -moz-transform: translateY(-49px);
+            -o-transform: translateY(-49px);
+        }
+
+        footer.hide {
+            -webkit-transform: translateY(49px);
+            -moz-transform: translateY(49px);
+            -o-transform: translateY(49px);
+        }
+
+        header {
+            top: 0;
+        }
+
+        header::after,
+        footer::before {
+            display: block;
+            width: 105%;
+            height: 5px;
+            position: absolute;
+            content: " ";
+            top: 37px;
+            left: -11px;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+
+        header .header-wrap,
+        footer .footer-wrap {
+            background-color: #02779E;
+            width: 100%;
+            height: 44px;
+        }
+
+        header a {
+            width: 21px;
+            height: 24px;
+            color: #FFF;
+            position: absolute;
+            display: inline-block;
+            top: 10px;
+        }
+
+        header a.home-link {
+            float: left;
+            left: 10px;
+        }
+
+        header a.menu-link {
+            float: right;
+            right: 10px;
+        }
+
+        header a i {
+            font-size: 1.5em;
+        }
+
+        header h1 {
+            background: url('../img/@title.png') no-repeat center center;
+            background-size: 140px;
+            margin: 0;
+            padding: 10px 0;
+            height: 24px;
+            font-size: 24px;
+        }
+
+        header a span,
+        header h1 span {
+            margin-left: -3000px;
+        }
+
+
+        #cartoon-view {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .cartoon {
+            padding: 44px 10px;
+        }
+
+        .cartoon img {
+            width: 100%;
+        }
+
+        footer {
+            bottom : 0;
+        }
+
+        footer::before {
+            top: 5px;
+            box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        footer .footer-wrap {
+            position: relative;
+            top: 5px;
+        }
+
+        footer a {
+            position: absolute;
+            display: inline-block;
+            width: 50%;
+            height: 24px;
+            top: 11px;
+            color: #FFF;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+
+        footer a.prev {
+            left: 0;
+        }
+
+        footer a.next {
+            right: 0;
+            text-align: right;
+        }
+
+        footer a i {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-wrap">
+        <a href="#" class="home-link"><i class="fa fa-long-arrow-left"></i><span>back</span></a>
+        <h1><span>InfinityComics</span></h1>
+        <a href="#" class="menu-link"><i class="fa fa-bars"></i><span>fa-home</span></a>
+    </div>
+</header>
+
+<article id="cartoon-view">
+    <div class="scroller">
+        <div class="cartoon">
+            <img src="../img/@cartton.png">
+        </div>
+    </div>
+</article>
+
+<footer class="hide">
+    <div class="footer-wrap">
+        <a href="#" class="prev"><i class="fa fa-chevron-left"></i><span>이전 화</span></a>
+        <a href="#" class="next"><span>다음 화</span><i class="fa fa-chevron-right"></i></a>
+    </div>
+</footer>
+
+<!-- include dependency libraries -->
+<script src="../vendor/modernizr-2.8.1.min.js"></script>
+<script src="../vendor/jquery-2.1.0.min.js"></script>
+<script src="../vendor/underscore-1.6.0.min.js"></script>
+<script src="../vendor/jindo-2.9.0.min.js"></script>
+<script src="../vendor/jindo.m.component-1.13.0.min.js"></script>
+<!-- //include dependency libraries -->
+
+<!-- include module source -->
+<script src="../src/namespace.js"></script>
+<script src="../src/rdg.CartoonView.js"></script>
+<!-- // include module source -->
+
+<script>
+    setTimeout(function(){
+        window.scrollTo(0, 1);
+    }, 100);
+
+    var oScroll = new jindo.m.Scroll("cartoon-view", {
+        bUseHScroll : false,
+        bUseVScroll : true,
+        bUseBounce : true,
+        nDeceleration : 0.0040,
+        bUseCss3d : Modernizr.csstransforms3d,
+        bUseTranslate : Modernizr.csstransforms,
+        bAutoResize : true
+    });
+
+    var timerShow = null,
+        timerHide = null,
+        prevTop = 0;
+
+    oScroll.attach('position', function(event){
+        var top = event.nTop;
+
+        if(top <= -49 && prevTop < top){
+            $('header').removeClass('hide');
+        }
+
+        if(!(prevTop < top - -30) && top <= -49 && !(top + -$('#cartoon-view').height() <= -$('.scroller').height())){
+            $('header').addClass('hide');
+        }
+
+        if(top > -60){
+            $('header').removeClass('hide');
+        }
+
+        if(top + -$('#cartoon-view').height() <= -$('.scroller').height()){
+            $('footer').removeClass('hide');
+            $('header').removeClass('hide');
+        }else{
+            $('footer').addClass('hide');
+        }
+
+        prevTop = event.nTop;
+    });
+
+    oScroll.attach('scroll', function(event){
+        prevTop = event.nTop;
+    });
+
+    $(window).on("resize", function(){
+        window.scrollTo(0, 0);
+    });
+</script>
+</body>
+</html>
