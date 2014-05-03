@@ -1,6 +1,6 @@
 {
-    "name" : "cartoon-view",
-    "description" : "웹툰 뷰 모듈",
+    "name" : "Webtoon View",
+    "description" : "웹툰 뷰 레이아웃",
     "version" : "0.0.1",
     "author" : "uyeong21c",
     "email" : "uyeong21c@gmail.com",

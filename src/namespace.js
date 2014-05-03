@@ -8,17 +8,7 @@ if(!window.rdg){
 /**
  * @namespace
  */
-rdg.model = rdg.model || {};
-
-/**
- * @namespace
- */
-rdg.collection = rdg.collection || {};
-
-/**
- * @namespace
- */
-rdg.controller = rdg.controller || {};
+rdg.pmod = rdg.pmod || {};
 
 /**
  * @namespace

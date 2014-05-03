@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         jsdoc : {
             dist : {
-                src : ['README.md', 'src/*.js'],
+                src : ['README.md', 'src/**/*.js'],
                 options: {
                     destination: 'docs',
                     encoding : 'utf-8',
@@ -17,7 +17,6 @@ module.exports = function(grunt) {
                 src : [
                     'src/namespace.js',
                     'src/model/*.js',
-                    'src/collection/*.js',
                     'src/view/*.js',
                     'src/rdg.CartoonView.js'
                 ],
