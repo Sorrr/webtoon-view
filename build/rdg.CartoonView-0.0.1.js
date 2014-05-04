@@ -78,6 +78,12 @@ rdg.view.Scroller.prototype = {
 
         this._buildIScroll();
         this._bindEvents();
+
+        // ipad ios7의 safari에서 height 값이
+        // 안맞는 버그가 있어 방어코드로 삽입함.
+        if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
+            $('html').addClass('ipad ios7');
+        }
     },
 
     /**

@@ -12,45 +12,7 @@
     <link rel="stylesheet" href="../css/normalize.css"/>
     <link rel="stylesheet" href="../css/boilerplate.css"/>
     <link rel="stylesheet" href="../css/font-awesome.css"/>
-    <style>
-        .pull-left{float:left}
-        .pull-right{float:right}
-        .blind{display:inline-block;margin-left:-3000px}
-        html,body{width:100%;height:100%}
-        header,footer{position:absolute;overflow:hidden;height:47px;left:0;right:0;z-index:9999;-webkit-transition:All 0.2s ease;-moz-transition:All 0.2s ease;-o-transition:All 0.2s ease;transition:All 0.2s ease}
-        header{top:0}
-        footer{bottom:-1px}
-        header.hide{-webkit-transform:translateY(-47px);-moz-transform:translateY(-47px);-o-transform:translateY(-47px)}
-        footer.hide{-webkit-transform:translateY(47px);-moz-transform:translateY(47px);-o-transform:translateY(47px)}
-        header::after,footer::before{display:block;width:105%;height:5px;position:absolute;content:" ";left:-11px;z-index:-1}
-        header::after{top:37px;-webkit-box-shadow:0 3px 2px rgba(0, 0, 0, 0.7);box-shadow:0 3px 2px rgba(0, 0, 0, 0.7)}
-        footer::before{top:5px;-webkit-box-shadow:0 -1px 2px rgba(0, 0, 0, 0.7);box-shadow:0 -1px 2px rgba(0, 0, 0, 0.7)}
-        header .header-wrap,footer .footer-wrap{position:relative;background-color:#02779E;width:100%;height:44px}
-        header .header-wrap{top:0}
-        footer .footer-wrap{top:5px}
-        header h1.title{margin:0 auto;padding:10px 0;width:170px;height:24px;text-align:center;line-height:24px;font-size:1em;color:#FFF}
-        header h1.title span.subject{position:relative;display:inline-block;height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-        header h1.title span.subject.single-digit{max-width:140px;padding-right:30px}
-        header h1.title span.subject.double-digit{max-width:131px;padding-right:39px}
-        header h1.title span.subject.three-digit{max-width:121px;padding-right:49px}
-        header h1.title span.episodes{position:absolute;top:0;right:0}
-        header a.home-link,header a.menu-link,
-        footer a.prev-link,footer a.next-link {position:relative;display:inline-block;height:44px;color:#FFF;text-decoration:none}
-        header a.home-link,header a.menu-link{width:40px;font-size:1.3em}
-        footer a.prev-link,footer a.next-link {width:90px;font-size:1em}
-        header a.home-link i,header a.menu-link i,
-        footer a.prev-link i,footer a.next-link i{display:inline-block;position:absolute;top:0;height:44px}
-        header a.home-link i,header a.menu-link i{line-height:45px !important}
-        footer a.prev-link i,footer a.next-link i{line-height:44px}
-        header a.home-link i,footer a.prev-link i{left:10px}
-        header a.menu-link i,footer a.next-link i{right: 10px}
-        footer a.prev-link span,footer a.next-link span{display:inline-block;height:18px;position:absolute;top:10px}
-        footer a.prev-link span{left:28px}
-        footer a.next-link span{right:28px}
-        #webtoon-view {position:absolute;top:0;right:0;bottom:-1px;left:0;z-index:1000;overflow: hidden}
-        .webtoon{padding:10px}
-        .webtoon .media{width:100%}
-    </style>
+    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
 <header>
@@ -99,9 +61,7 @@
 <!-- // include module source -->
 
 <script>
-    (function(){
-        var webtoonView = new rdg.WebtoonView('#webtoon-view');
-    })();
+    var webtoonView = new rdg.WebtoonView('#webtoon-view');
 </script>
 </body>
 </html>
