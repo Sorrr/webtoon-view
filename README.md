@@ -1,14 +1,14 @@
 # cartoonView
-웹툰 뷰 모듈
+웹툰 뷰 레이아웃
 
-## Getting Started
-_(Coming soon)_
+  * [Demo](http://example.net/)
+  * [JSDoc](http://example.net/)
 
-## Documentation
-_(Coming soon)_
+## Dependency
 
-## Examples
-_(Coming soon)_
+  * iscroll-5.1.1.js
+  * iscroll-probe-5.1.1.js
+  * modernizr-2.8.1.js
 
 ## Release History
 _(Nothing yet)_

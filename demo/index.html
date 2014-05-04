@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Webtoon View</title>
+    <meta name="description" content="">
+    <style>
+        #wrap{position:relative;width:950px;height:672px;margin:0 auto}
+        header{position:absolute;top:250px;right:0;width:500px;font-size:1.2em;text-align:center;color:#93826d}
+        article{background:url('../img/@bg.png') no-repeat 4px;width:600px;height: 672px}
+        article .ifr-view{width:253px;height:449px;margin:0 auto;padding-top:115px;overflow:hidden}
+        iframe{width:100%;height:100%;border:0}
+        footer{position:absolute;width:500px;top:350px;right:0;text-align:center}
+        footer p{margin:0;line-height:24px;color:#d9c7b1}
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <header>
+        <h1 class="title">
+            Webtoon View
+        </h1>
+    </header>
+
+    <article>
+        <div class="ifr-view">
+        <iframe src="./view.html" scrolling="no"></iframe>
+        </div>
+    </article>
+
+    <footer>
+        <p>Copyright (c) 2014 ju.uyeong</p>
+        <p>Licensed under the MIT license.</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -6,11 +6,36 @@ rdg.view.Scroller = function(){this.init.apply(this, arguments);};
 rdg.view.Scroller.prototype = {
 
     /**
+     * 최상단으로 스크롤하면 발생하는 이벤트
+     * @event rdg.view.Scroller#scrollTop
+     * @type {IScroll}
+     */
+
+    /**
+     * 최하단으로 스크롤하면 발생하는 이벤트
+     * @event rdg.view.Scroller#scrollBottom
+     * @type {IScroll}
+     */
+
+    /**
+     * 위로 스크롤하면 발생하는 이벤트
+     * @event rdg.view.Scroller#scrollUp
+     * @type {IScroll}
+     */
+
+    /**
+     * 아래로 스크롤하면 발생하는 이벤트
+     * @event rdg.view.Scroller#scrollDown
+     * @type {IScroll}
+     */
+
+    /**
      * 컨텐츠의 스크롤을 관리하는 뷰
+     * @param {string} elementId
      * @constructs
      */
-    init : function(selector){
-        this._selector = selector || '#webtoon-view';
+    init : function(elementId){
+        this._elementId = elementId || 'webtoon-view';
         this._pastY = 0;
         this._oldY = 0;
         this._events = {
@@ -25,8 +50,8 @@ rdg.view.Scroller.prototype = {
 
         // ipad ios7의 safari에서 height 값이
         // 안맞는 버그가 있어 방어코드로 삽입함.
-        if (navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)) {
-            $('html').addClass('ipad ios7');
+        if(navigator.userAgent.match(/iPad;.*CPU.*OS 7_\d/i)){
+            document.getElementsByTagName('html')[0].className = 'ipad ios7';
         }
     },
 
@@ -83,7 +108,7 @@ rdg.view.Scroller.prototype = {
             options.shrinkScrollbars = 'scale';
         }
 
-        this._iscroll = new IScroll(this._selector, options);
+        this._iscroll = new IScroll('#'+ this._elementId, options);
     },
 
     /**
@@ -91,12 +116,18 @@ rdg.view.Scroller.prototype = {
      * @private
      */
     _bindEvents : function(){
-        this._iscroll.on('scroll', $.proxy(this._onScrollFireEvent, this));
-        this._iscroll.on('scrollEnd', $.proxy(this._onScrollEndFireEvent, this));
+        this._iscroll.on('scroll', this._onScrollFireEvent.bind(this));
+        this._iscroll.on('scrollEnd', this._onScrollEndFireEvent.bind(this));
+        document.addEventListener('resize', this._onResizeNativeScrollTop.bind(this));
+        document.addEventListener('touchmove', function(e) {e.preventDefault()});
     },
 
     /**
      * iscroll의 scroll 이벤트 리스너
+     * @fires rdg.view.Scroller#scrollTop
+     * @fires rdg.view.Scroller#scrollBottom
+     * @fires rdg.view.Scroller#scrollUp
+     * @fires rdg.view.Scroller#scrollDown
      * @private
      */
     _onScrollFireEvent : function(){
@@ -115,6 +146,8 @@ rdg.view.Scroller.prototype = {
 
     /**
      * iscroll의 scrollEnd 이벤트 리스너
+     * @fires rdg.view.Scroller#scrollTop
+     * @fires rdg.view.Scroller#scrollBottom
      * @private
      */
     _onScrollEndFireEvent : function(){
@@ -128,8 +161,16 @@ rdg.view.Scroller.prototype = {
     },
 
     /**
+     * document의 resize 이벤트 리스너
+     * @private
+     */
+    _onResizeNativeScrollTop : function(){
+        window.scrollTo(0, 0);
+    },
+
+    /**
      * 현재 스크롤이 제일 상단에 있는지 체크한다.
-     * @param {number} y
+     * @param {number?} y
      * @returns {boolean}
      * @private
      */
@@ -140,7 +181,7 @@ rdg.view.Scroller.prototype = {
 
     /**
      * 현재 스크롤이 제일 하단에 있는지 체크한다.
-     * @param {number} y
+     * @param {number?} y
      * @returns {boolean}
      * @private
      */
@@ -177,7 +218,7 @@ rdg.view.Scroller.prototype = {
     },
 
     /**
-     * 이벤트를 발생한다.
+     * 이벤트를 발생시킨다.
      * @param {string} eventname
      * @private
      */

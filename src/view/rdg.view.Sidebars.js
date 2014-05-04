@@ -34,8 +34,8 @@ rdg.view.Sidebars.prototype = {
      * @private
      */
     _assignElements : function(){
-        this._welHeader = $('header');
-        this._welFooter = $('footer');
+        this._elHeader = document.getElementsByTagName('header')[0];
+        this._elFooter = document.getElementsByTagName('footer')[0];
     },
 
     /**
@@ -46,15 +46,15 @@ rdg.view.Sidebars.prototype = {
 
         var self = this;
 
-        this._welHeader.addClass('hide');
-        this._welFooter.addClass('hide');
+        this._elHeader.className = 'hide';
+        this._elFooter.className = 'hide';
         this._status = rdg.view.Sidebars.STATUS.HIDE;
 
         clearTimeout(this._showTimer);
 
         this._hideTimer = setTimeout(function(){
-            self._welHeader.css('visibility', 'hidden');
-            self._welFooter.css('visibility', 'hidden');
+            self._elHeader.style.visibility = 'hidden';
+            self._elFooter.style.visibility = 'hidden';
         }, 300);
     },
 
@@ -66,15 +66,15 @@ rdg.view.Sidebars.prototype = {
 
         var self = this;
 
-        this._welHeader.css('visibility', 'visible');
-        this._welFooter.css('visibility', 'visible');
+        this._elHeader.style.visibility = 'visible';
+        this._elFooter.style.visibility = 'visible';
         this._status = rdg.view.Sidebars.STATUS.SHOW;
 
         clearTimeout(this._hideTimer);
 
         this._showTimer = setTimeout(function(){
-            self._welHeader.removeClass('hide');
-            self._welFooter.removeClass('hide');
+            self._elHeader.className = '';
+            self._elFooter.className = '';
         }, 100);
     },
 

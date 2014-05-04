@@ -29,9 +29,9 @@
     <div class="scroller">
         <div class="webtoon">
             <ul>
-                <li style="height:1500px">
-                    <img class="media" src="../img/@webtoon.png">
-                </li>
+                <li><img class="media" src="../img/@webtoon.png"></li>
+                <li><img class="media" src="../img/@webtoon.png"></li>
+                <li><img class="media" src="../img/@webtoon.png"></li>
             </ul>
         </div>
     </div>
@@ -46,8 +46,6 @@
 
 <!-- include dependency libraries -->
 <script src="../vendor/modernizr-2.8.1.min.js"></script>
-<script src="../vendor/jquery-2.1.0.min.js"></script>
-<script src="../vendor/underscore-1.6.0.min.js"></script>
 <script src="../vendor/iscroll-5.1.1.min.js"></script>
 <script src="../vendor/iscroll-probe-5.1.1.min.js"></script>
 <!-- //include dependency libraries -->
@@ -60,10 +58,7 @@
 <!-- // include module source -->
 
 <script>
-    var webtoonView = new rdg.WebtoonView({
-        selector : '#webtoon-view',
-        url : '/api/webtoon/:subject'
-    });
+    var webtoonView = new rdg.WebtoonView('webtoon-view');
 </script>
 </body>
 </html>
