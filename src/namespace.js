@@ -8,9 +8,4 @@ if(!window.rdg){
 /**
  * @namespace
  */
-rdg.pmod = rdg.pmod || {};
-
-/**
- * @namespace
- */
 rdg.view = rdg.view || {};

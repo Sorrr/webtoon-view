@@ -8,51 +8,7 @@ if(!window.rdg){
 /**
  * @namespace
  */
-rdg.pmod = rdg.pmod || {};
-
-/**
- * @namespace
- */
 rdg.view = rdg.view || {};
-
-/**
- * @class
- * @ignore
- */
-rdg.pmod.Sidebars = function(){this.init.apply(this, arguments);};
-
-/**
- * @enum {number}
- * @readonly
- */
-rdg.pmod.Sidebars.STATUS = {
-    SHOW : 0,
-    HIDE : 1
-};
-
-rdg.pmod.Sidebars.prototype = {
-
-    /**
-     * Sidebars 뷰의 presentation model
-     * @constructs
-     */
-    init : function(status){
-        this._status = status || 0;
-    },
-
-    /**
-     * status를 셋하거나 반환한다.
-     * @param {number|undefined} status
-     * @returns {number|undefined}
-     */
-    status : function(status){
-        if(status === undefined){
-            return this._status;
-        }
-
-        this._status = status;
-    }
-};
 
 /**
  * @class
@@ -252,19 +208,28 @@ rdg.view.Scroller.prototype = {
  * @ignore
  */
 rdg.view.Sidebars = function(){this.init.apply(this, arguments);};
+
+/**
+ * @enum {number}
+ * @readonly
+ */
+rdg.view.Sidebars.STATUS = {
+    SHOW : 0,
+    HIDE : 1
+};
+
 rdg.view.Sidebars.prototype = {
 
     /**
      * HEADER와 FOOTER를 관리하는 뷰
-     * @param {rdg.pmod.Sidebars} pmodel
      * @constructs
      */
-    init : function(pmodel){
-        this._pmodel = pmodel;
+    init : function(){
         this._welHeader = null;
         this._welFooter = null;
         this._hideTimer = 0;
         this._showTimer = 0;
+        this._status = 0;
 
         this._assignElements();
     },
@@ -282,11 +247,13 @@ rdg.view.Sidebars.prototype = {
      * 헤더와 푸터를 감춘다.
      */
     hide : function(){
+        if(this._status === rdg.view.Sidebars.STATUS.HIDE){return false;}
+
         var self = this;
 
         this._welHeader.addClass('hide');
         this._welFooter.addClass('hide');
-        this._pmodel.status(rdg.pmod.Sidebars.STATUS.HIDE);
+        this._status = rdg.view.Sidebars.STATUS.HIDE;
 
         clearTimeout(this._showTimer);
 
@@ -300,11 +267,13 @@ rdg.view.Sidebars.prototype = {
      * 헤더와 푸터를 보인다.
      */
     show : function(){
+        if(this._status === rdg.view.Sidebars.STATUS.SHOW){return false;}
+
         var self = this;
 
         this._welHeader.css('visibility', 'visible');
         this._welFooter.css('visibility', 'visible');
-        this._pmodel.status(rdg.pmod.Sidebars.STATUS.SHOW);
+        this._status = rdg.view.Sidebars.STATUS.SHOW;
 
         clearTimeout(this._hideTimer);
 

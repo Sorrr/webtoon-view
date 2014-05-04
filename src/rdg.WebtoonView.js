@@ -9,14 +9,15 @@ rdg.WebtoonView.prototype = {
      * @author    ju.uyeong
      * @version   0.0.1
      * @copyright 2014 ju.uyeong Licensed under the MIT license.
-     * @param {string} selector
+     * @param {Object} options
+     * @param {string} options.selector
+     * @param {string} options.url
      * @constructs
      */
-    init : function(selector){
+    init : function(options){
         var self = this;
 
-        this._buildModels();
-        this._buildViews(selector);
+        this._buildViews(options.selector);
         this._bindEvents();
 
         this._viewSidebars.delayHide(300);
@@ -24,14 +25,6 @@ rdg.WebtoonView.prototype = {
         setTimeout(function(){
             self._viewScroller.refresh()
         },300);
-    },
-
-    /**
-     * 모델을 빌드한다.
-     * @private
-     */
-    _buildModels : function(){
-        this._pmodSidebars = new rdg.pmod.Sidebars();
     },
 
     /**
@@ -53,6 +46,7 @@ rdg.WebtoonView.prototype = {
         this._viewScroller.on('scrollBottom', $.proxy(this._onScrollShowSidebars, this));
         this._viewScroller.on('scrollUp', $.proxy(this._onScrollShowSidebars, this));
         this._viewScroller.on('scrollTop', $.proxy(this._onScrollShowSidebars, this));
+
         $(document).on('resize', $.proxy(this._onResizeScroller, this));
     },
 
@@ -61,9 +55,7 @@ rdg.WebtoonView.prototype = {
      * @private
      */
     _onScrollShowSidebars : function(){
-        if(this._pmodSidebars.status() === rdg.pmod.Sidebars.STATUS.HIDE){
-            this._viewSidebars.show();
-        }
+        this._viewSidebars.show();
     },
 
     /**
@@ -71,9 +63,7 @@ rdg.WebtoonView.prototype = {
      * @private
      */
     _onScrollHideSidebars : function(){
-        if(this._pmodSidebars.status() === rdg.pmod.Sidebars.STATUS.SHOW){
-            this._viewSidebars.hide();
-        }
+        this._viewSidebars.hide();
     },
 
     /**

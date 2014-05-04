@@ -28,11 +28,11 @@
 <article id="webtoon-view">
     <div class="scroller">
         <div class="webtoon">
-            <img class="media" src="../img/@cartton.png">
-            <img class="media" src="../img/@cartton.png">
-            <img class="media" src="../img/@cartton.png">
-            <img class="media" src="../img/@cartton.png">
-            <img class="media" src="../img/@cartton.png">
+            <ul>
+                <li style="height:1500px">
+                    <img class="media" src="../img/@webtoon.png">
+                </li>
+            </ul>
         </div>
     </div>
 </article>
@@ -54,14 +54,16 @@
 
 <!-- include module source -->
 <script src="../src/namespace.js"></script>
-<script src="../src/model/rdg.pmod.Sidebars.js"></script>
 <script src="../src/view/rdg.view.Sidebars.js"></script>
 <script src="../src/view/rdg.view.Scroller.js"></script>
 <script src="../src/rdg.WebtoonView.js"></script>
 <!-- // include module source -->
 
 <script>
-    var webtoonView = new rdg.WebtoonView('#webtoon-view');
+    var webtoonView = new rdg.WebtoonView({
+        selector : '#webtoon-view',
+        url : '/api/webtoon/:subject'
+    });
 </script>
 </body>
 </html>
