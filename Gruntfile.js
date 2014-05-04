@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         jsdoc : {
             dist : {
-                src : ['README.md', 'src/**/*.js'],
+                src : ['README.md', 'src/*.js'],
                 options: {
                     destination: 'docs',
                     encoding : 'utf-8',
@@ -16,18 +16,16 @@ module.exports = function(grunt) {
             dist : {
                 src : [
                     'src/namespace.js',
-                    'src/model/*.js',
-                    'src/view/*.js',
-                    'src/rdg.CartoonView.js'
+                    'src/rdg.*.js'
                 ],
-                dest: 'build/rdg.CartoonView-0.0.1.js'
+                dest: 'build/rdg.WebtoonView-0.0.1.js'
             }
         },
         uglify : {
             my_target : {
                 files : {
-                    'build/rdg.CartoonView-0.0.1.min.js' : [
-                        'build/rdg.CartoonView-0.0.1.js'
+                    'build/rdg.WebtoonView-0.0.1.min.js' : [
+                        'build/rdg.WebtoonView-0.0.1.js'
                     ]
                 }
             }

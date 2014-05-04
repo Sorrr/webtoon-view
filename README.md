@@ -1,8 +1,9 @@
 # cartoonView
 웹툰 뷰 레이아웃
 
-  * [Demo](http://example.net/)
-  * [JSDoc](http://example.net/)
+  * [Demo(iframe)](http://uyeong.github.io/webtoon-view/)
+  * [Demo(mobile)](http://uyeong.github.io/webtoon-view/view.html)
+  * [Documentation](http://uyeong.github.io/webtoon-view/docs)
 
 ## Dependency
 
