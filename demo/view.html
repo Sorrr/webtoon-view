@@ -58,7 +58,9 @@
 <!-- // include module source -->
 
 <script>
-    var webtoonView = new rdg.WebtoonView('webtoon-view');
+    window.addEventListener('load', function(){
+        var webtoonView = new rdg.WebtoonView('webtoon-view');
+    });
 </script>
 </body>
 </html>
